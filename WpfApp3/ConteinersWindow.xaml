@@ -1,0 +1,280 @@
+﻿<Window x:Class="WpfApp3.ConteinersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Title="ConteinersWindow"
+         Height="750" Width="800"
+        Background ="Beige">
+    <StackPanel Orientation="Vertical">
+        <Label Content="Вертикальна панель"
+               HorizontalContentAlignment="Center"
+               Foreground="Maroon"
+               Background="Azure"/>
+        <Button>
+            Press Me
+        </Button>
+        <Border BorderBrush="Salmon"
+                BorderThickness="2"
+                Margin="10">
+            <StackPanel Orientation ="Horizontal">
+                <Label Content="Горизонтальна панель"
+                  Foreground="DarkSlateBlue"
+                  Background="LightGray"
+                       Margin="1"/>
+                <Button Content="Press Me"
+                        Margin="3"/>
+                <Button  Margin="3">
+                    Press Me
+                </Button>
+                <Button  Margin="3">
+                    Press Me
+                </Button>
+            </StackPanel>
+        </Border>
+        <Button Click="Button_Click">
+            2Press Me2
+        </Button>
+        <Border
+            BorderBrush="Lime"
+            BorderThickness="2"
+            Margin="10,5">
+            <WrapPanel>
+                <Label Content="WrapPanel" />
+                <Button Content="Click me" Margin = "3" />
+                <Button Content="Click me" Margin = "3" />
+                <Button Content="Click me" Margin = "3" />
+                <Button Content="Click me" Margin = "3" />
+                <Button Content="Click me" Margin = "3" />
+                <Button Content="Click me" Margin = "3" />
+                <Button Content="Click me" Margin = "3" />
+                <Button Content="Click me" Margin = "3" />
+            </WrapPanel>
+        </Border>
+        <Button>
+            3Press Me3
+        </Button>
+        <Border
+            BorderBrush="Tomato"
+            BorderThickness="2">
+
+            <DockPanel Height="150"
+                       LastChildFill="True">
+                <Label 
+                    Background ="Green"
+                    Content="Header"
+                    DockPanel.Dock="Top" Width="788" 
+                    FontSize="20"                    
+                    HorizontalContentAlignment="Center"/>
+
+                <Label 
+                    Background="Green"
+                    Content="Footer"
+                    DockPanel.Dock="Bottom"
+                     FontSize="20" 
+                    HorizontalContentAlignment="Center"/>
+                <Label 
+                    Background="Brown"
+                    Content="Left"
+                    DockPanel.Dock="Left" Width="91" 
+                     FontSize="20" 
+                     HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"/>
+
+                <Label 
+                    Background="Brown"
+                    Content="Right"
+                    DockPanel.Dock="Right" Width="100" Height="133"
+                     FontSize="20" 
+                     HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"/>
+
+                <Label 
+                    Background="Gray"
+                    Content="Content"
+                    DockPanel.Dock="Top" Height="95"
+                     FontSize="20" 
+                    Foreground ="Yellow"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"/>
+            </DockPanel>
+        </Border>
+        <StackPanel Orientation="Horizontal">
+            <Border
+                BorderBrush="Chocolate"
+                BorderThickness="2"
+                Margin="5">
+                <UniformGrid Rows="3" Columns="3">
+                    <Button Content="Btn" Margin="3"/>
+                    <Button Content="Btn" Margin="3"/>
+                    <Button Content="Btn" Margin="3"/>
+                    <Button Content="Btn" Margin="3"/>
+                    <Button Content="Btn" Margin="3"/>
+                    <Button Content="Btn" Margin="3"/>
+                    <Button Content="Btn" Margin="3"/>
+                    <Button Content="Btn" Margin="3"/>
+                    <Button Content="Btn" Margin="3"/>
+                </UniformGrid>
+            </Border>
+            <Border
+                BorderBrush="Chocolate"
+                BorderThickness="2"
+                Margin="5">
+                <Grid Height="150" Width="150">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button
+                        Content="Btn"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Margin="3"/>
+                    <Button
+                        Content="Btn"
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        Grid.Row="0"
+                        Margin="3"/>
+                    <Button
+                        Content="Btn"
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Margin="3"/>
+                    <Button
+                        Content="Btn"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="2"
+                        Margin="3"/>
+                    <!--<Label
+                        Background="Aqua"
+                        Content="1"
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Margin="3"/>
+                    <Label
+                        Background="Aqua"
+                        Content="2"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Margin="3"/>
+                    <Label
+                        Background="Aqua"
+                        Content="3"
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Margin="3"/>
+                    <Label
+                        Background="Aqua"
+                        Content="4"
+                        Grid.Column="2"
+                        Grid.Row="1"
+                        Margin="3"/>
+                    <Label
+                        Background="Aqua"
+                        Content="5"
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        Margin="3"/>-->
+                </Grid>
+            </Border>
+            <Grid Height="250" Width="1550">
+                <!--<DockPanel Height="150"
+                       LastChildFill="True">-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+                <Button
+                        Content="Header"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Margin="3"/>
+                <Button
+                        Content="Footer"
+                        Grid.Column="1"                      
+                        Grid.Row="2"
+                        Margin="3"/>
+                <Button
+                        Content="Left"
+                        Grid.Column="0"
+                        Grid.RowSpan="3"
+                        Grid.Row="0"
+                        Margin="3"/>
+                <Button
+                        Content="Content"
+                        Grid.Column="1"
+                        
+                        Grid.Row="1"
+                        Margin="3"/>
+                <Button
+                        Content="Right"
+                        Grid.Column="2"
+                        Grid.RowSpan="3"
+                        Grid.Row="0"
+                        Margin="3"/>
+
+                <!--<Label 
+                    Background ="Green"
+                    Content="Header"
+                    DockPanel.Dock="Top" Width="788" 
+                    FontSize="20"                    
+                    HorizontalContentAlignment="Center"/>
+
+                    <Label 
+                    Background="Green"
+                    Content="Footer"
+                    DockPanel.Dock="Bottom"
+                     FontSize="20" 
+                    HorizontalContentAlignment="Center"/>
+                    <Label 
+                    Background="Brown"
+                    Content="Left"
+                    DockPanel.Dock="Left" Width="91" 
+                     FontSize="20" 
+                     HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"/>
+
+                    <Label 
+                    Background="Brown"
+                    Content="Right"
+                    DockPanel.Dock="Right" Width="100" Height="133"
+                     FontSize="20" 
+                     HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"/>
+
+                    <Label 
+                    Background="Gray"
+                    Content="Content"
+                    DockPanel.Dock="Top" Height="95"
+                     FontSize="20" 
+                    Foreground ="Yellow"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"/>-->
+                <!--</DockPanel>-->
+            </Grid>
+
+        </StackPanel>
+
+    </StackPanel>
+</Window>

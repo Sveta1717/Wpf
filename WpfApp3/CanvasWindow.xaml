@@ -1,0 +1,60 @@
+﻿<Window x:Class="WpfApp3.CanvasWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Title="CanvasWindow" Height="450" Width="800"
+        Loaded="Window_Loaded"
+        KeyDown="Window_KeyDown"
+        KeyUp="Window_KeyUp"
+        Closing="Window_Closing">
+
+    <DockPanel RenderTransformOrigin="0.489,0.271">
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+            <Label Content="Time "/>
+            <Label Content="00:00:00 " x:Name="ClockLabel" />
+            <Label Content="Bonuses "/>
+            <Label Content="00 " x:Name="BonusesLabel" />
+        </StackPanel>
+        <Canvas x:Name="Field">
+            <Rectangle x:Name="Brick1" Width="70" Height="20" 
+                       Fill="Salmon" Stroke="Maroon" StrokeThickness="2"
+                       Canvas.Left="56" Canvas.Top="71"/>
+            <Rectangle Width="70" Height="20" 
+                       Fill="Salmon" Stroke="Maroon" StrokeThickness="2"
+                       Canvas.Left="173" Canvas.Top="71"  />
+            <Rectangle Width="70" Height="20" 
+                       Fill="Salmon" Stroke="Maroon" StrokeThickness="2"
+                       Canvas.Left="295" Canvas.Top="71" HorizontalAlignment="Left" VerticalAlignment="Center"  />
+            <Rectangle Width="70" Height="20" 
+                       Fill="Salmon" Stroke="Maroon" StrokeThickness="2"
+                       Canvas.Left="417" Canvas.Top="71" HorizontalAlignment="Left" VerticalAlignment="Center"  />
+            <Rectangle Width="70" Height="20" 
+                       Fill="Salmon" Stroke="Maroon" StrokeThickness="2"
+                       Canvas.Left="556" Canvas.Top="71" HorizontalAlignment="Left" VerticalAlignment="Center"  />
+            <Rectangle x:Name="Brick2" Width="70" Height="20"
+                       Fill="Lime" Stroke="Orange" StrokeThickness="2"
+                       Canvas.Left="56" Canvas.Top="169" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Rectangle Width="70" Height="20"
+                       Fill="Lime" Stroke="Orange" StrokeThickness="2"
+                       Canvas.Left="173" Canvas.Top="169" />
+            <Rectangle Width="70" Height="20"
+                       Fill="Lime" Stroke="Orange" StrokeThickness="2"
+                       Canvas.Left="295" Canvas.Top="169" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Rectangle Width="70" Height="20"
+                       Fill="Lime" Stroke="Orange" StrokeThickness="2"
+                       Canvas.Left="417" Canvas.Top="169" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Rectangle Width="70" Height="20"
+                       Fill="Lime" Stroke="Orange" StrokeThickness="2"
+                       Canvas.Left="556" Canvas.Top="169" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Ellipse x:Name="Ball" Width="20" Height="20"
+                     Fill="Aquamarine" Stroke="Blue" StrokeThickness="2"
+                     Canvas.Left="380" Canvas.Top="306" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Rectangle x:Name="Ship" Width="100" Height="14"
+                       Fill="Gold" Stroke="Orange" StrokeThickness="2"
+                       Canvas.Left="340" Canvas.Top="369" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        </Canvas>
+    </DockPanel>
+</Window>
