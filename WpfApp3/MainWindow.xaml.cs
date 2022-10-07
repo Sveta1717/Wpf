@@ -30,6 +30,11 @@ namespace WpfApp3
             new ConteinersWindow().ShowDialog();
         }
 
+        private void ButtonTimetable_of_classes_Click(object sender, RoutedEventArgs e)
+        {
+            new Timetable_of_classesWindow().ShowDialog();
+        }
+
         private void ButtonMines_Click(object sender, RoutedEventArgs e)
         {
             new MinesWindow().ShowDialog();
@@ -38,6 +43,31 @@ namespace WpfApp3
         private void ButtonsCanvas_Click(object sender, RoutedEventArgs e)
         {
             new CanvasWindow().ShowDialog();
+        }
+
+        private void ButtonStyles_Click(object sender, RoutedEventArgs e)
+        {
+            new StylesWindow().ShowDialog();
+        }
+
+        private void ButtonTriggers_Click(object sender, RoutedEventArgs e)
+        {
+            new TriggersWindow().ShowDialog();
+        }
+
+        private void ButtonRegistration_Click(object sender, RoutedEventArgs e)
+        {
+            new RegistrationFformWindow().ShowDialog();
+        }
+
+        private void ButtonDnD_Click(object sender, RoutedEventArgs e)
+        {
+            new DNDWindow().ShowDialog();
+        }
+
+        private void ButtonAdoBasics_Click(object sender, RoutedEventArgs e)
+        {
+            new ADO.ADOBasicsWindow().ShowDialog();
         }
     }
 }

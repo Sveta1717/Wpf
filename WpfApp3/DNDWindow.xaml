@@ -1,0 +1,32 @@
+﻿<Window x:Class="WpfApp3.DNDWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Title="DNDWindow" Height="450" Width="800"
+        MouseMove ="Window_MouseMove" MouseUp ="Window_MouseUp"
+        Loaded ="Window_Loaded">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Save" Click="MenuSave_Click"/>
+                <MenuItem Header="Load" Click="MenuLoad_Click"/>
+                <Separator/>
+                <MenuItem Header="Close" Click="MenuClose_Click"/>
+            </MenuItem>
+        </Menu>
+        <TextBox Name="jsonfile" />
+        <Canvas x:Name="Field">
+            <Rectangle x:Name="Brick1" Width="70" Height="20" 
+                       Fill="Salmon" Stroke="Maroon" StrokeThickness="2"
+                       Canvas.Left="577" Canvas.Top="366"
+                       MouseDown="Brick_MouseDown"/>
+            <Rectangle x:Name="Brick2" Width="70" Height="20" 
+                       Fill="Lime" Stroke="Orange" StrokeThickness="2"
+                       Canvas.Left="153" Canvas.Top="366"
+                       MouseDown="Brick_MouseDown" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </Canvas>
+    </DockPanel>
+</Window>

@@ -1,0 +1,408 @@
+﻿<Window x:Class="WpfApp3.Timetable_of_classesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Title="Timetable_of_classesWindow" Height="450" Width="800">
+    <StackPanel>
+        <Label
+            Content="Розклад занять на тиждень"
+            FontSize="30"
+            FontWeight="Black"
+            HorizontalContentAlignment="Center"/>
+        <Border
+                BorderBrush="Chocolate"
+                BorderThickness="2"
+                Margin="5">
+            <UniformGrid Rows="1" Columns="4">
+                <Button Content="День" Margin="3"/>
+                <Button Content="Пара" Margin="3"/>
+                <Button Content="Час" Margin="3"/>
+                <Button Content="Предмет" Margin="3"/>
+            </UniformGrid>
+
+        </Border>
+        <Border BorderBrush="Chocolate"
+                BorderThickness="2"
+                Margin="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border></Border>
+                <Label 
+                           Background="Beige"
+                            Content="Понеділок"                         
+                            Grid.Column="0"  
+                            Grid.RowSpan="3"
+                            Grid.Row="0"                            
+                            HorizontalContentAlignment="Center"/>
+
+                <Label 
+                            Grid.Column="0"                            
+                            Grid.Row="0"/>
+                <Label 
+                            Grid.Column="0"                            
+                            Grid.Row="0"/>
+
+                <Label 
+                            Content="1"                             
+                            Grid.Column="2"                             
+                            Grid.Row="0"                           
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="2"
+                            Grid.Column="2"                            
+                            Grid.Row="1"                            
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="3"
+                            Grid.Column="2"                            
+                            Grid.Row="2"                            
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="09:00" 
+                            Grid.Column="4"                            
+                            Grid.Row="0"
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="10:30" 
+                            Grid.Column="4"                            
+                            Grid.Row="1"
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="12:00" 
+                            Grid.Column="4"                            
+                            Grid.Row="2"
+                            HorizontalContentAlignment="Center"/>
+
+                <Label 
+                            Content="{}{ WPF }" 
+                            Grid.Column="6"                            
+                            Grid.Row="0"
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="{}{        }" 
+                            Grid.Column="6"                            
+                            Grid.Row="1"
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="HTML" 
+                            Grid.Column="6"                            
+                            Grid.Row="2"
+                            HorizontalContentAlignment="Center"/>
+
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="1"                            
+                            Grid.Row="0"
+                            />
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="3"                            
+                            Grid.Row="0"
+                            />
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="5"                            
+                            Grid.Row="0"/>
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="1"                            
+                            Grid.Row="1"
+                            />
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="3"                            
+                            Grid.Row="1"
+                            />
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="5"                            
+                            Grid.Row="1"/>
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="1"                            
+                            Grid.Row="2"
+                            />
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="3"                            
+                            Grid.Row="2"
+                            />
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="5"                            
+                            Grid.Row="2"/>
+
+            </Grid>
+
+        </Border>
+        <Border BorderBrush="Chocolate"
+                BorderThickness="2"
+                Margin="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border></Border>
+                <Label 
+                           Background="Beige"
+                            Content="Вівторок"                         
+                            Grid.Column="0"  
+                            Grid.RowSpan="3"
+                            Grid.Row="0"                            
+                            HorizontalContentAlignment="Center"/>
+
+                <Label 
+                            Grid.Column="0"                            
+                            Grid.Row="0"/>
+                <Label 
+                            Grid.Column="0"                            
+                            Grid.Row="0"/>
+
+                <Label 
+                            Content="1"                             
+                            Grid.Column="2"                             
+                            Grid.Row="0"                           
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="2"
+                            Grid.Column="2"                            
+                            Grid.Row="1"                            
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="3"
+                            Grid.Column="2"                            
+                            Grid.Row="2"                            
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="09:00" 
+                            Grid.Column="4"                            
+                            Grid.Row="0"
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="10:30" 
+                            Grid.Column="4"                            
+                            Grid.Row="1"
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="12:00" 
+                            Grid.Column="4"                            
+                            Grid.Row="2"
+                            HorizontalContentAlignment="Center"/>
+
+                <Label 
+                            Content="WPF" 
+                            Grid.Column="6"                            
+                            Grid.Row="0"
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="{}{HTML}" 
+                            Grid.Column="6"                            
+                            Grid.Row="1"
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="{}{        }" 
+                            Grid.Column="6"                            
+                            Grid.Row="2"
+                            HorizontalContentAlignment="Center"/>
+
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="1"                            
+                            Grid.Row="0"
+                            />
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="3"                            
+                            Grid.Row="0"
+                            />
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="5"                            
+                            Grid.Row="0"/>
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="1"                            
+                            Grid.Row="1"
+                            />
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="3"                            
+                            Grid.Row="1"
+                            />
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="5"                            
+                            Grid.Row="1"/>
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="1"                            
+                            Grid.Row="2"
+                            />
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="3"                            
+                            Grid.Row="2"
+                            />
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="5"                            
+                            Grid.Row="2"/>
+
+            </Grid>
+        </Border>
+
+        <Border BorderBrush="Chocolate"
+                BorderThickness="2"
+                Margin="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border></Border>
+                <Label 
+                           Background="Beige"
+                            Content="Середа"                         
+                            Grid.Column="0"  
+                            Grid.RowSpan="3"
+                            Grid.Row="0"                            
+                            HorizontalContentAlignment="Center"/>
+
+                <Label 
+                            Grid.Column="0"                            
+                            Grid.Row="0"/>
+                <Label 
+                            Grid.Column="0"                            
+                            Grid.Row="0"/>
+
+                <Label 
+                            Content="1"                             
+                            Grid.Column="2"                             
+                            Grid.Row="0"                           
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="2"
+                            Grid.Column="2"                            
+                            Grid.Row="1"                            
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="3"
+                            Grid.Column="2"                            
+                            Grid.Row="2"                            
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="09:00" 
+                            Grid.Column="4"                            
+                            Grid.Row="0"
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="10:30" 
+                            Grid.Column="4"                            
+                            Grid.Row="1"
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="12:00" 
+                            Grid.Column="4"                            
+                            Grid.Row="2"
+                            HorizontalContentAlignment="Center"/>
+
+                <Label 
+                            Content="HTML" 
+                            Grid.Column="6"                            
+                            Grid.Row="0"
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="{}{WPF}" 
+                            Grid.Column="6"                            
+                            Grid.Row="1"
+                            HorizontalContentAlignment="Center"/>
+                <Label 
+                            Content="{}{        }" 
+                            Grid.Column="6"                            
+                            Grid.Row="2"
+                            HorizontalContentAlignment="Center"/>
+
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="1"                            
+                            Grid.Row="0"
+                            />
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="3"                            
+                            Grid.Row="0"
+                            />
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="5"                            
+                            Grid.Row="0"/>
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="1"                            
+                            Grid.Row="1"
+                            />
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="3"                            
+                            Grid.Row="1"
+                            />
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="5"                            
+                            Grid.Row="1"/>
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="1"                            
+                            Grid.Row="2"
+                            />
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="3"                            
+                            Grid.Row="2"
+                            />
+                <Label 
+                            Background="Chocolate"
+                            Grid.Column="5"                            
+                            Grid.Row="2"/>
+
+            </Grid>
+        </Border>
+    </StackPanel>
+</Window>

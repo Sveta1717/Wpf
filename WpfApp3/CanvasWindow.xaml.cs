@@ -241,6 +241,12 @@ namespace WpfApp3
                     }
                 }
                 #endregion
+
+                if (Bonuses.Count == 0 && Bricks.Count == 0)
+                {
+                    MessageBox.Show("Україна понад усе! Перемога!");
+                    Close();
+                }
             }
             #endregion
 
