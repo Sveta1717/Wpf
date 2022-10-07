@@ -1,0 +1,40 @@
+﻿<Window x:Class="WpfApp3.ADO.ADOBasicsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3.ADO"
+        mc:Ignorable="d"
+        Title="ADOBasicsWindow" Height="450" Width="800">
+    <StackPanel Orientation="Vertical">
+        <TextBlock>
+            Технология доступа к данным ADO - это программный интерфейс (набор стандартизированных
+            инструментов) для работы с данными,<LineBreak/> в основном, с базами данных.
+            Суть взаимодействия с данными состоит в следующей схеме:<LineBreak/>
+            <LineBreak/>
+            DB(Database)  - файл с необходимыми данными (и метаданными)<LineBreak/>
+             | <LineBreak/>
+            DBMS(СУБД)  - сервер (обычно), принимающий запросы и обрабатывающий их<LineBreak/>
+             |<LineBreak/>
+            ADO - технология доступа, дает возможность унифицировать работу с разными СУБД<LineBreak/>
+             |<LineBreak/>
+            C# - язык программирования<LineBreak/>
+        </TextBlock>
+        <TextBlock>
+            Структура технологии ADO:
+            Подключение (Connection) - слой взаимодействия с СУБД. Для установки подключения
+            нужно: данные о провайдере (типе СУБД), размещение БД, данные авторизации.
+            Традицинно (для ADO) эти данные собираются в одну строку, известную как
+            "ConnectionString"        
+        </TextBlock>
+        <StackPanel Orientation="Horizontal">
+            <Button Click="ButtonConnect_Click">Підключитися</Button>
+            <Button Click="ButtonDisconnect_Click">Відключитися</Button>            
+        </StackPanel>
+        <TextBlock>
+             Следующим этапом является командный объект (SqlCommand) он "отражает"
+            окно запросов в Студии
+        </TextBlock>
+        <Button Click="ButtonTimestamp_Click">SELECT CURRENT_TIMESTAMP</Button>
+    </StackPanel>    
+</Window>

@@ -1,0 +1,98 @@
+﻿<Window x:Class="WpfApp3.StylesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Title="StylesWindow" Height="450" Width="800">
+    
+    <!-- Ресурсы окна - определения для его элементов-->
+    <Window.Resources> 
+        <!--Стили - это наборы значения атрибутов для 
+            тех элементов, которые эти элементы реализуют(подключают)-->
+        <Style TargetType="Button">
+            <!--Данные стили автоматически подключаются ко всем
+            элементам указанного типа (Button) -->
+            <Setter Property="Background" Value="Fuchsia" />
+            <!--Суть "Background"="Fuchsia", но в синтаксисе
+                 разметочного языка-->
+            <Setter Property="FontSize" Value="20" />
+            <!-- Новое значение - новый Setter-->
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="7,3" />            
+        </Style>
+
+        <!-- Стили по всем Label -->
+        <Style TargetType= "{x:Type Label}">
+            <Setter Property="FontSize" Value="23" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        
+        <!-- В ресурсах окна можно задавать разные стили-->
+        <Style x:Key="CenteredContent">
+            <!-- Именованный стиль, цели нет - автоматически
+                 не подключается, для использования элемент
+                 должен ссылаться на этот ресурс-->
+            <Setter Property="Control.HorizontalContentAlignment"
+                    Value="Center"/>
+            <!-- Поскольку у стиля не указана цель (Target)
+                 в нем доступны только те свойства, которые
+                 есть у любых элементов. К остальным
+                 свойствам нужно обращаться через ссылку на тип 
+                 (например Control)-->
+            <Setter Property="Control.VerticalContentAlignment"
+                    Value="Center"/>
+        </Style>
+
+        <!-- Стили можно наследовать (расширять) - BasedOn-->
+        <Style x:Key="BgCentered"
+               BasedOn="{StaticResource CenteredContent}">
+            <!-- Данный стиль берет все из CenteredContent
+                    и добавляет свои определения-->
+            <Setter Property="Control.Background">
+                <!-- Для комплексных значений тег разделяется и его
+                контент - это Value -->
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0 0"
+                                         EndPoint="1 0">
+                        <GradientStop Offset="0" Color="DarkBlue"/>
+                        <GradientStop Offset="0.2" Color="Blue"/>
+                        <GradientStop Offset="0.7" Color="Gold"/>
+                        <GradientStop Offset="1" Color="Yellow"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!-- Ресурсы - именованные атрибуты -->
+        <FontFamily x:Key="Comic">Comic Sans MS</FontFamily>
+    </Window.Resources>
+    
+    <!-- Контент окна - сами элементы-->
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <Button Click="Button_Click">Button 1</Button>
+            <Button Click="Button_Click_1">Button 2</Button>
+            <Button Click="Button_Click_2">Button 3</Button>
+            <Button Click="Button_Click_3">Button 4</Button>
+        </StackPanel>
+        <StackPanel Orientation="Vertical">
+            <!-- Применение локального стиля ОТМЕНЯЕТ глобальный стиль-->
+            <Label Style="{StaticResource CenteredContent}">Label 1</Label>
+           
+            <!-- Отдельные атрибуты - не отменяют стиль -->
+            <Label Foreground="Fuchsia">Label 2</Label>
+            <Label Style="{StaticResource BgCentered}" Height="60">Label 3</Label>
+            <Label FontFamily="{StaticResource Comic}">Label 4</Label>
+        </StackPanel>
+        <!-- Для некоторых элементов применение стилей носит 
+             неожиданный эффект-->
+        <CheckBox Style="{StaticResource BgCentered}">
+            Check Me
+        </CheckBox>
+        <StackPanel Orientation="Horizontal" x:Name="Field">
+            <!-- Суда добавляем элементы из кода -->
+        </StackPanel>
+    </StackPanel>
+</Window>
