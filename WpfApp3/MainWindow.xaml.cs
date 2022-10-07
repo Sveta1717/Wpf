@@ -39,5 +39,20 @@ namespace WpfApp3
         {
             new CanvasWindow().ShowDialog();
         }
+
+        private void ButtonStyles_Click(object sender, RoutedEventArgs e)
+        {
+            new StylesWindow().ShowDialog();
+        }
+
+        private void ButtonTriggers_Click(object sender, RoutedEventArgs e)
+        {
+            new TriggersWindow().ShowDialog();
+        }
+
+        private void ButtonRegistration_Click(object sender, RoutedEventArgs e)
+        {
+            new RegistrationFformWindow().ShowDialog();
+        }
     }
 }
