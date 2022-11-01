@@ -36,5 +36,6 @@
             окно запросов в Студии
         </TextBlock>
         <Button Click="ButtonTimestamp_Click">SELECT CURRENT_TIMESTAMP</Button>
-    </StackPanel>    
+    </StackPanel>  
+    
 </Window>
