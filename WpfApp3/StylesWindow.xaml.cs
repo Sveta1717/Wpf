@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,9 @@ namespace WpfApp3
     /// Логика взаимодействия для StylesWindow.xaml
     /// </summary>
     public partial class StylesWindow : Window
+        
     {
+       
         public StylesWindow()
         {
             InitializeComponent();

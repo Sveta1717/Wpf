@@ -69,5 +69,24 @@ namespace WpfApp3
         {
             new ADO.ADOBasicsWindow().ShowDialog();
         }
+
+        private void ButtonAdoSales_Click(object sender, RoutedEventArgs e)
+        {
+            new ADO.SalesWindow().ShowDialog();
+        }
+        private void ButtonAdoCrud_Click(object sender, RoutedEventArgs e)
+        {
+            new ADO.View.AdoCrudWindow().ShowDialog();
+        }
+
+        private void ButtonEF_Click(object sender, RoutedEventArgs e)
+        {
+            new ADO.View.AdoEFWindow().ShowDialog();
+        }
+
+        private void ButtonSP1_Click(object sender, RoutedEventArgs e)
+        {
+            new ADO.SystemProgrammingWindow().ShowDialog();
+        }
     }
 }

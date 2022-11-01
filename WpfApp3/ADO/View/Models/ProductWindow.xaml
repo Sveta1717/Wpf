@@ -1,0 +1,78 @@
+﻿<Window x:Class="WpfApp3.ADO.View.Models.ProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3.ADO.View.Models"
+        mc:Ignorable="d"
+        Title="ProductWindow" 
+        Loaded="Window_Loaded"
+        Height="350" Width="550">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3.5*"/>
+        </Grid.RowDefinitions>
+        <Label 
+            Grid.Row="0" Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            FontSize="20"
+            Content="Товар"/>
+        <Label
+            Grid.Row="1" Grid.Column="0"
+            FontSize="20"
+            VerticalAlignment="Center"
+            Content="Ідентифікатор"/>
+        <Label
+            Grid.Row="2" Grid.Column="0"
+            FontSize="20"
+            VerticalAlignment="Center"
+            Content="Назва товару"/>
+        <Label
+            Grid.Row="3" Grid.Column="0"
+            FontSize="20"
+            VerticalAlignment="Center"
+            Content="Ціна товару"/>
+        <StackPanel Orientation="Horizontal"                    
+                    Grid.Row="4" Grid.Column="0"
+                    Grid.ColumnSpan="2">
+            <Button x:Name="Save"          
+            FontSize="20"
+            Margin="30 20" Width="120" 
+            Click="Save_Click"
+            Content="Зберегти"/>
+            <Button x:Name="Delete"
+            Grid.Column="0" Grid.Row="4"
+            FontSize="20"
+            Margin="30 20" Width="120"
+            Click="Delete_Click"
+            Content="Видалити"/>
+            <Button x:Name="Close"
+            Grid.Column="1" Grid.Row="4"
+            FontSize="20"
+            Margin="30 20" Width="120"
+            Click="Close_Click"
+            Content="Закрити"/>
+        </StackPanel>
+        <TextBlock x:Name="ProducttId"
+             Grid.Row="1" Grid.Column="1"
+             FontSize="16"
+             VerticalAlignment="Center"/>
+        <TextBox x:Name="ProductName"
+             Grid.Row="2" Grid.Column="1"
+             FontSize="20"
+             VerticalAlignment="Center"/>
+        <TextBox x:Name="ProductPrice"
+             Grid.Row="3" Grid.Column="1"
+             FontSize="20"
+             VerticalAlignment="Center"/>
+    </Grid>
+</Window>

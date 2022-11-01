@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp3"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="750" Width="800"
+        Height="1050" Width="800"
         Background ="Beige">
     <Window.Resources>
         <Style TargetType="Button">           
@@ -59,5 +59,19 @@
         <Button
             Click="ButtonAdoBasics_Click"
             Content="1. Основи"/>
+        <Button
+            Click="ButtonAdoSales_Click"
+            Content="2. Приєднаний режим"/>
+        <Button
+            Click="ButtonAdoCrud_Click"
+            Content="3. CRUD"/>
+        <Button
+            Click="ButtonEF_Click"
+            Content="4. EntityFramework"/>
+        <Label 
+            Content="Системне програмування" />
+        <Button
+            Click="ButtonSP1_Click"
+            Content="1. Введення. Багатопоточність"/>
     </StackPanel>  
 </Window>

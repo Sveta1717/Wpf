@@ -1,0 +1,1 @@
+﻿SELECT TOP 1 Id FROM Managers ORDER BY NEWID()

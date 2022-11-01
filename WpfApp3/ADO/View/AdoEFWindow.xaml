@@ -1,0 +1,115 @@
+﻿<Window x:Class="WpfApp3.ADO.View.AdoEFWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3.ADO.View"
+        mc:Ignorable="d"
+        Loaded ="Window_Loaded"
+        Title="AdoEFWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="0" Grid.Column="0">
+            <Label Content="Monitor"
+                   HorizontalAlignment="Center"
+                   FontSize="24" FontWeight="Bold" />
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Departments:" 
+                       FontSize="20"/>
+                <Label x:Name="LabelDepartments"
+                       Content="0" 
+                       FontSize="20"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Products:" 
+                       FontSize="20"/>
+                <Label x:Name="LabelProducts"
+                       Content="0" 
+                       FontSize="20"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Managers:" 
+                       FontSize="20"/>
+                <Label x:Name="LabelManagers"
+                       Content="0" 
+                       FontSize="20"/>
+            </StackPanel>
+        </StackPanel>
+
+        <ListView ItemsSource="{Binding Departments}"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  MaxHeight="150"
+                  Grid.Row="1" Grid.Column="0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn 
+                            Header="Id" 
+                            DisplayMemberBinding="{Binding Path=Id}"/>
+                    <GridViewColumn 
+                            Header="Name"
+                            DisplayMemberBinding="{Binding Path=Name}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <ListView ItemsSource="{Binding Products}"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  MaxHeight="150"
+                  Grid.Row="0" Grid.Column="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn 
+                            Header="Id" 
+                            DisplayMemberBinding="{Binding Path=Id}"/>
+                    <GridViewColumn 
+                            Header="Name"
+                            DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn 
+                            Header="Price"
+                            DisplayMemberBinding="{Binding Path=Price}"/>
+                </GridView>
+            </ListView.View>
+        </ListView> 
+        <ListView ItemsSource="{Binding Managers}"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  MaxHeight="150"
+                  Grid.Row="1" Grid.Column="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn 
+                            Header="Id" 
+                            DisplayMemberBinding="{Binding Path=Id}"/>
+                    <GridViewColumn 
+                            Header="Name"
+                            DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn 
+                            Header="Surname" 
+                            DisplayMemberBinding="{Binding Path=Surname}"/>
+                    <GridViewColumn 
+                            Header="Secname" 
+                            DisplayMemberBinding="{Binding Path=SecName}"/>
+                    <GridViewColumn 
+                            Header="Id_main_dep" 
+                            DisplayMemberBinding="{Binding Path=Id_main_dep}"/>
+                    <GridViewColumn 
+                            Header="Id_sec_dep" 
+                            DisplayMemberBinding="{Binding Path=Id_sec_dep}"/>
+                    <GridViewColumn 
+                            Header="Id_chief" 
+                            DisplayMemberBinding="{Binding Path=Id}"/>
+                    
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>
