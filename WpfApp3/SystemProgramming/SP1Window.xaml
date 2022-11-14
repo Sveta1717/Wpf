@@ -1,0 +1,61 @@
+﻿<Window x:Class="WpfApp3.SystemProgramming.SP1Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3.SystemProgramming"
+        mc:Ignorable="d"
+        Title="SP1Window" Height="650" Width="800"
+        Background="Beige">
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical">
+            <Button x:Name="StartThread"
+                    Click="StartThread_Click"
+                    Content="Запустити поток"/>
+            <Button x:Name="ShowMessage"
+                    Click= "ShowMessage_Click"
+                    Content="Показати повідомлення"/>
+            <TextBlock x:Name="Messages" />
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical"
+                    Grid.Column="0" Grid.Row="1">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Label Content ="Річна інфляція"/>
+                <Button Content="StartSync" Click ="StartSync_Click" Margin="15 0" />
+                <Button Content="StartAsync" Click="StartAsync_Click" x:Name="StartAsyncButton"/>
+            </StackPanel>
+            <TextBlock x:Name="Inflation" />
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical"
+                    Grid.Column="1" Grid.Row="1">
+            <Label HorizontalAlignment="Center"
+                   FontSize="20">
+                Управління потоками
+            </Label>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Button Content="Start" x:Name="Start1"
+                        Click="Start1_Click"/>
+                <ProgressBar Width="200"
+                             Minimum="0" Maximum="100"
+                             Margin="20 0"
+                             x:Name="Progress1"/>
+                <Button Content="Stop"
+                        x:Name="Stop1"
+                        Click="Stop1_Click"/>                
+            </StackPanel>
+        </StackPanel>                    
+    </Grid>
+</Window>

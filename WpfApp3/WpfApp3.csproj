@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ADO\SystemProgramming\б\" />
+    <Folder Include="SystemProgramming\б\" />
   </ItemGroup>
 
 </Project>

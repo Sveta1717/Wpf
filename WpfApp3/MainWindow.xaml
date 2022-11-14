@@ -27,7 +27,9 @@
             </Style>
         </StackPanel.Resources>
         <Label 
-            Content="Основи WPF" />
+            Content="Основи WPF" 
+            FontSize="20"
+            HorizontalContentAlignment="Center"/>
         <Button
             Click="ButtonConteiners_Click"
             Content="1. Контейнери" />
@@ -69,9 +71,15 @@
             Click="ButtonEF_Click"
             Content="4. EntityFramework"/>
         <Label 
-            Content="Системне програмування" />
+            Content="Системне програмування"
+            FontSize="20"
+            FontWeight="Bold"
+            HorizontalContentAlignment="Center"/>
         <Button
             Click="ButtonSP1_Click"
             Content="1. Введення. Багатопоточність"/>
+        <Button
+            Click="ButtonTask_Click"
+            Content="2. Пул потоків. Багатозадачність"/>
     </StackPanel>  
 </Window>

@@ -52,7 +52,7 @@
             <Label FontSize="17" FontWeight="Bold"
                    HorizontalContentAlignment="Center"
                    Content="Відділ - кількість працівників" />
-            <DataGrid x:Name ="CountManagerGrid" Height="165" />
+            <TextBlock x:Name ="CountManagerInfo"/>
         </StackPanel>
 
         <Grid Grid.Row="0" Grid.Column="2" >

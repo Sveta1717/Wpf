@@ -73,14 +73,12 @@ namespace WpfApp3.ADO
         private void ShowManagers()
         {
             ManagersGrid.ItemsSource = _managers.GetList();
-            ManagersGrid.Columns[0].Visibility = Visibility.Collapsed;            
+            ManagersGrid.Columns[0].Visibility = Visibility.Collapsed;               
         }
 
         private void ShowDepManagers()
         {
-            CountManagerGrid.ItemsSource = _departments.GetList();         
-            CountManagerGrid.Columns[0].Visibility = Visibility.Collapsed;
-           
+            CountManagerInfo.Text = _departments.CountManagers();
         }
 
         private void ShowMonitor()

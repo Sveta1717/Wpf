@@ -86,7 +86,12 @@ namespace WpfApp3
 
         private void ButtonSP1_Click(object sender, RoutedEventArgs e)
         {
-            new ADO.SystemProgrammingWindow().ShowDialog();
+            new SystemProgramming.SP1Window().ShowDialog();
+        }
+
+        private void ButtonTask_Click(object sender, RoutedEventArgs e)
+        {
+            new SystemProgramming.TaskWindow().ShowDialog();
         }
     }
 }

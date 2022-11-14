@@ -67,7 +67,6 @@ namespace WpfApp3.ADO.DAL
                 List<Entities.Department> departments = new();
               
                 cmd.CommandText = "SELECT Id, Name FROM Departments";
-
                
                 SqlDataReader res = cmd.ExecuteReader();
 
@@ -77,23 +76,29 @@ namespace WpfApp3.ADO.DAL
                     {
                         Id = res.GetGuid(0),
                         Name = res.GetString(1)
-                    });
-                    CountManagers();
-                
-                }
-               
-              
+                    });   
+                }   
                 res.Close();
                 return departments;
             }
         }
 
-
-        public void CountManagers()
+        public string CountManagers()
         {
-            //var sqlCount = _connection.CreateCommand();
-            var sqlCount = "SELECT COUNT(*) FROM Managers";
-            
+            StringBuilder sb = new();
+            using (SqlCommand cmd = _connection.CreateCommand())
+            {
+                cmd.CommandText = "SELECT Departments.Name, COUNT(*) FROM Managers a JOIN Departments ON Departments.Id = a.Id_main_dep GROUP BY Departments.Name";
+
+                SqlDataReader res = cmd.ExecuteReader();
+
+                while (res.Read())
+                {
+                    sb.AppendLine("  " + res.GetString(0) + " - " + res.GetInt32(1));
+                }
+                res.Close();
+            }
+            return sb.ToString();
         }
     }
 }
