@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Xml;
 
 namespace WpfApp3.SystemProgramming
 {
@@ -101,7 +103,7 @@ namespace WpfApp3.SystemProgramming
                 // Напрямую обратится к элементам окна нельзя, т.к. это другой поток
                 // Inflation.Text += String.Format("\n Итог {0}", sum );
                 Dispatcher.Invoke(   // альтернатива (см. строка 44)
-                    () => Inflation.Text += String.Format("\nМесяц {1} Итог {0}", sum, threadData.Month)
+                    () => Inflation.Text += String.Format("\nМісяць {1} Усього {0}", sum, threadData.Month)
                 );
 
                 lock (locker2)
@@ -117,14 +119,14 @@ namespace WpfApp3.SystemProgramming
         }
         private void InflationComputed()  // завершение - расчет закончен
         {
-            Inflation.Text += String.Format("\n--- Итог {0}", Sum);
+            Inflation.Text += String.Format("\n--- Усього {0}", Sum);
             StartAsyncButton.IsEnabled = true;  // разблокируем кнопку - работа завершена
         }
 
         private void StartAsync_Click(object sender, RoutedEventArgs e)
         {
             Sum = 100;  // начальная сумма
-            Inflation.Text = "На начало года: " + Sum;
+            Inflation.Text = "На початок року: " + Sum;
             int monthes = 12;
             activeThreads = monthes;
             for (int i = 0; i < monthes; i++)
@@ -139,7 +141,64 @@ namespace WpfApp3.SystemProgramming
             }
             StartAsyncButton.IsEnabled = false;   // блокируем кнопку до завершения потоков
         }
+        #endregion
 
+        #region Sum
+
+        int Sum1;
+        int num;
+        int step;
+        private void SumComputed()
+        {
+            SUM.Text += String.Format("\n--- Загальна сума {0}", Sum1);
+            StartAsyncButton.IsEnabled = true;
+        }
+
+        private void StartSum_Click(object sender, RoutedEventArgs e)
+        {
+            Sum1 = 0;
+            num = int.Parse(ValueEnter.Text);
+            TextBox textBox = new();
+            
+            TextWriter textWriter = new StringWriter();
+            textWriter.Write(num);
+            SUM.Text = "  Рахуємо суму всіх чисел від 1 до " + num;
+            activeThreads = num;
+                        
+            for (int i = 0; i < num; i++)
+            {               
+                new Thread(AddValue).Start(
+                   new ThreadData { Num = i + 1}
+                    );       
+            }
+            StartSumButton.IsEnabled = false;
+        }       
+
+        private void AddValue(object? data)
+        {
+            if (data is ThreadData threadData)
+            {               
+                int sum;                
+                Thread.Sleep(100);
+                lock (locker)
+                {
+                    sum = Sum1;                 
+                    //num = Enumerable.Range(1, num).Sum();          
+                    sum += ((num+ 1) / 2); 
+                    Sum1 = sum;  
+                }
+                Dispatcher.Invoke(() => SUM.Text += String.Format("\nШаг {0} додаємо {1} разом {2}", step += 1, threadData.Num, sum)); ;
+            }           
+
+            lock (locker2)
+            {
+                activeThreads--;
+                if (activeThreads == 0)
+                {
+                    Dispatcher.Invoke(SumComputed);
+                }
+            }
+        }  
         #endregion
 
         Thread worker;
@@ -148,19 +207,19 @@ namespace WpfApp3.SystemProgramming
         private void Start1_Click(object sender, RoutedEventArgs e)
         {
             Progress1.Value = 0;
-            worker = new Thread(Worker);
+            worker = new Thread(Worker1);
             tokenSource = new();
             CancellationToken token = tokenSource.Token;
             worker.Start(token);
-        }
+        }        
 
         private void Stop1_Click(object sender, RoutedEventArgs e)
         {
             // worker.Abort(); deprecated, не работает
             tokenSource.Cancel();
         }
-
-        private void Worker(object? pars)
+        
+        private void Worker1(object? pars)
         {
             if (pars is CancellationToken token)
             {
@@ -183,17 +242,18 @@ namespace WpfApp3.SystemProgramming
                     // поток остановлен - нужны завершающие действия
                     while(i > 0)
                     {
-                        Thread.Sleep(100);
+                        Thread.Sleep(50);
                         Dispatcher.Invoke(() => Progress1.Value--);
                         i--;
                     }
                 }
             }
-        }
+        }       
     }
 
     class ThreadData  // для передачи данных в потоковый метод
     {
         public int Month { get; set; }
+        public int Num { get; set; }         
     }
 }

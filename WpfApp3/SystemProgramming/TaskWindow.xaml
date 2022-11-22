@@ -16,12 +16,67 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
-            <Label FontSize="20" HorizontalAlignment="Center">Пул потоков</Label>
+            <Label FontSize="20" HorizontalAlignment="Center">Пул потоків</Label>
             <StackPanel Orientation="Horizontal">
                 <Button Click="Start1_Click"  x:Name="Start1" Content="Start" Margin="5" Padding="5 3"/>
                 <Button Click="Stop1_Click"  x:Name="Stop1" Content="Stop" Margin="5" Padding="5 3"/>
             </StackPanel>
             <TextBlock x:Name="Log1" TextWrapping="Wrap"/>
         </StackPanel>
+        
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+            <Label FontSize="20" HorizontalAlignment="Center">Багатозадачність</Label>
+            <StackPanel Orientation="Horizontal">
+                <Button Click="Start2_Click"  x:Name="Start2" Content="Start" Margin="5" Padding="5 3"/>
+                <Button Click="Stop2_Click"  x:Name="Stop2"   Content="Stop" Margin="5" Padding="5 3"/>
+                <Button Click="Start3_Click"  x:Name="Start3" Content="Start" Margin="5" Padding="5 3"/>
+            </StackPanel>
+            <TextBlock x:Name="Log2" TextWrapping="Wrap"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+            <Label HorizontalAlignment="Center"
+                   FontSize="20">
+                Робота трьох методів трьома ProgressBar
+            </Label>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Button Content="Start_consistent" x:Name="START1"
+                        Click="START1_Click"
+                        Margin="5 5"/>
+                <Button Content="Start_parallel" x:Name="START2"
+                        Click="START2_Click"
+                        Margin="5 5"/>
+                <Button Content="Start_mixed" x:Name="START3"
+                        Click="START3_Click"
+                        Margin="5 5"/>
+            </StackPanel>
+            <StackPanel>
+                <ProgressBar Width="231"
+                             Minimum="0" Maximum="100"
+                             Margin="20 5"
+                             x:Name="Progress1" Height="23"/>
+            </StackPanel>
+            <StackPanel>
+                <ProgressBar Width="231"
+                             Minimum="0" Maximum="100"
+                             Margin="20 5"
+                             x:Name="Progress2" Height="23"/>
+            </StackPanel>
+            <StackPanel>
+                <ProgressBar Width="231"
+                             Minimum="0" Maximum="100"
+                             Margin="20 5"
+                             x:Name="Progress3" Height="23"/>
+            </StackPanel>
+            <StackPanel> 
+                <Button Content="STOP"
+                        x:Name="STOP"
+                        Click="STOP_Click"
+                        Margin="5"
+                        Width="238"/>
+            </StackPanel>
+        </StackPanel>
+
     </Grid>
 </Window>

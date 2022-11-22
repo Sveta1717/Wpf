@@ -31,11 +31,32 @@
                     Grid.Column="0" Grid.Row="1">
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
-                <Label Content ="Річна інфляція"/>
+                <Label Content ="Річна інфляція"
+                       FontSize="20"/>
                 <Button Content="StartSync" Click ="StartSync_Click" Margin="15 0" />
                 <Button Content="StartAsync" Click="StartAsync_Click" x:Name="StartAsyncButton"/>
             </StackPanel>
             <TextBlock x:Name="Inflation" />
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical"
+                    Grid.Column="1" Grid.Row="0">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Label Content ="Сума чисел"
+                       FontSize="20"/>             
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Label Content ="Введить число, до якого потрібно розрахувати суму всіх чисел"
+                       FontSize="12"/>
+            </StackPanel>                  
+                <TextBox x:Name="ValueEnter" Width="50" Margin="10 10"/>          
+                       <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">                
+                <Button Content="StartSum" Click="StartSum_Click" x:Name="StartSumButton"/>
+            </StackPanel>
+            <TextBlock x:Name="SUM"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical"
@@ -46,16 +67,18 @@
             </Label>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
-                <Button Content="Start" x:Name="Start1"
-                        Click="Start1_Click"/>
-                <ProgressBar Width="200"
+                <Button Content="Start1" x:Name="Start1"
+                        Click="Start1_Click"
+                        Margin="0 5"/>        
+                 <ProgressBar Width="200"
                              Minimum="0" Maximum="100"
                              Margin="20 0"
                              x:Name="Progress1"/>
                 <Button Content="Stop"
                         x:Name="Stop1"
-                        Click="Stop1_Click"/>                
-            </StackPanel>
+                        Click="Stop1_Click"
+                        Margin="0 5"/>                
+            </StackPanel>           
         </StackPanel>                    
     </Grid>
 </Window>
