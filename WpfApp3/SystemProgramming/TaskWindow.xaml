@@ -77,6 +77,14 @@
                         Width="238"/>
             </StackPanel>
         </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
+            <Label FontSize="20" HorizontalAlignment="Center">async / await</Label>
+            <StackPanel Orientation="Horizontal">
+                <Button Click="StartAsyncButton_Click"  x:Name="StartAsyncButton" Content="Start" Margin="5" Padding="5 3"/>
+               
+            </StackPanel>
+            <TextBlock x:Name="LogAsync" TextWrapping="Wrap" FontFamily="Courier New"/>
+        </StackPanel>
 
     </Grid>
 </Window>

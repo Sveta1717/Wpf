@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -144,68 +145,19 @@ namespace WpfApp3.SystemProgramming
 
         #region Домашне завдання
 
-        private void START2_Click(object sender, RoutedEventArgs e)
-        {
-            Progress1.Value = 0;
-            Progress2.Value = 0;
-            Progress3.Value = 0;
-            cts = new();
-            int i = 0;
-            try
-            {
-                for (i = 0; i < 100; i++)
-                {
-                    ThreadPool.QueueUserWorkItem(PoolWorker2, new PoolWorkerData
-                    {
-                        CancellationToken = cts.Token
-                    });
-                }
-            }
-            catch (OperationCanceledException)
-            {
-                while (i > 0)
-                {
-                    Thread.Sleep(50);
-                    Dispatcher.Invoke(() => Progress1.Value--);
-                    i--;
-                }
-            }
-        }       
-
         private void START1_Click(object sender, RoutedEventArgs e)
         {
-            Task.Run(Starter_Parallel);
-            //Progress1.Value = 0;
-            //Progress2.Value = 10;
-            //Progress3.Value = 50;
-            //cts = new();
-            //int i = 0;
-            //try
-            //{
-            //    for (i = 0; i < 100; i++)
-            //    {
-            //        ThreadPool.QueueUserWorkItem(PoolWorker1, new PoolWorkerData
-            //        {
-            //            CancellationToken = cts.Token
-            //        });
-            //    }
-            //}
-            //catch (OperationCanceledException)
-            //{
-            //    while (i > 0)
-            //    {
-            //        Thread.Sleep(100);
-            //        Dispatcher.Invoke(() => Progress1.Value--);
-            //        Dispatcher.Invoke(() => Progress2.Value--);
-            //        Dispatcher.Invoke(() => Progress3.Value--);
-            //        i--;
-            //    }
-            //}
+            Task.Run(Starter_Consistent);            
+        }       
+
+        private void START2_Click(object sender, RoutedEventArgs e)
+        {
+            Task.Run(Starter_Parallel);           
         }
 
-        private Int32 Paralell(int num)
+        private Int32 Go(int num)
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
             //Task.Delay(1000);
             return num;
         }
@@ -215,60 +167,157 @@ namespace WpfApp3.SystemProgramming
             int i = 0;
             for (i = 0; i < 100; i++)
             {
-                Thread.Sleep(200);
-                //Task<Int32> t1 = Task.Run(() => Paralell(0));
-                //Dispatcher.Invoke(() => Progress1.Value++);                
-                //Task<Int32> t2 = Task.Run(() => Paralell(0));
-                //Dispatcher.Invoke(() => Progress2.Value++);
-                //Task<Int32> t3 = Task.Run(() => Paralell(0));
-                //Task<String> t2 = Task.Run(() => TaskMethod1(100));
-                //Task<String> t3 = Task.Run(() => TaskMethod1(100));
+                Thread.Sleep(100);                
 
-                Dispatcher.Invoke(() => Progress1.Value++);
                 Dispatcher.Invoke(() => Progress2.Value++);
+                Dispatcher.Invoke(() => Progress1.Value++);
                 Dispatcher.Invoke(() => Progress3.Value++);
             }
         }
         private void START3_Click(object sender, RoutedEventArgs e)
         {
-
+            Task.Run(Starter_Mixed);
         }
 
         private void STOP_Click(object sender, RoutedEventArgs e)
-        {           
-            cts?.Cancel();
+        {            
+            cts.Cancel();            
         }
 
-        private void PoolWorker1(object? pars)
+        private void Starter_Consistent()
         {
-            if (pars is PoolWorkerData data)
+            int i = 0;
+            for (i = 0; i < 100; i++)
             {
-                if (data.CancellationToken.IsCancellationRequested)
-                {
-                    return;
-                }
-                Thread.Sleep(200);
+                Task<Int32> t1 = Task.Run(() => Go(0));
+                Int32 res = t1.Result;
                 Dispatcher.Invoke(() => Progress1.Value++);
+
+                t1 = Task.Run(() => Go(10));
+                res = t1.Result;
+                Task<Int32> t2 = Task.Run(() => Go(0));
                 Dispatcher.Invoke(() => Progress2.Value++);
+
+                t2 = Task.Run(() => Go(20));
+                res = t2.Result;
                 Dispatcher.Invoke(() => Progress3.Value++);
             }
         }
 
-        private void PoolWorker2(object? pars)
+        private void Starter_Mixed()
         {
-            if (pars is PoolWorkerData data)
+            int i = 0;
+            for (i = 0; i < 100; i++)
             {
-                if (data.CancellationToken.IsCancellationRequested)
-                {
-                    return;
-                }               
-                    Thread.Sleep(200);
-                    Dispatcher.Invoke(() => Progress1.Value++);                   
+                Task<Int32> t1 = Task.Run(() => Go(0));
+                Int32 res = t1.Result;
+                Dispatcher.Invoke(() => Progress1.Value++);
+
+                t1 = Task.Run(() => Go(10));
+                res = t1.Result;
+                Task<Int32> t2 = Task.Run(() => Go(0));
+                Dispatcher.Invoke(() => Progress2.Value++);                
             }
+            for (i = 0; i < 100; i++)
+            {
+                Thread.Sleep(100);
+                Dispatcher.Invoke(() => Progress3.Value++);
+            }
+        }
+        #endregion
+
+       #region async/await
+        /* Задача: есть файл, в нем "конфигурация" - в каждой строке
+         * записана "пара" имя=значение
+         * Необходимо: считать файл, разобрать его содержимое в Dictionary
+         * -------
+         * Анализ: считывание файла процесс достаточно длительный, поэтому
+         * логично отделить эту подзадачу в самостоятельный метод и запускать
+         * асинхронно.
+         * Разбор строки на словарь также логично реализовать в виде
+         * самостоятельной задачи, это позволит ее использовать более
+         * универсально (напр., получать текст не из файла, а из Инета)
+         */
+        private async void StartAsyncButton_Click(object sender, RoutedEventArgs e)
+        {
+            //LogAsync.Text = "ini loading...\n";                    // Последовательное
+            //String fileContent =                                   // выполнение
+            //    await FileContentAsync("SystemProgramming/TaskWindow.ini");
+            //LogAsync.Text += fileContent;
+            /*
+            var loader = FileContentAsync("SystemProgramming/TaskWindow.ini");
+            LogAsync.Text = "ini loading...\n";                      // более эффуктивно:
+            //...                                                    // пока задача работает,
+            LogAsync.Text += await loader;                           // выполняется парал.действия
+            */
+            /* // последовательный вызов, организуемый "здесь"
+             var loader = FileContentAsync("SystemProgramming/TaskWindow.ini");
+             LogAsync.Text = "ini loading...\n";
+             String fileContent = await loader;
+             var dic = await ParseIniAsync(fileContent);
+             LogDicAsync(dic);
+            */
+            //Создание "нити" кода - последовательности выполнения задач
+            var task =
+                FileContentAsync("SystemProgramming/TaskWindow.ini")      // первая выполняется FileContent
+                 .ContinueWith(res => ParseIniAsync(res.Result))          // по окончанию - ParseIni
+                 .Unwrap()                                                // убрать один Task - техническое действие
+                 .ContinueWith(res => LogDicAsync(res.Result));           // по окончанию - LogDic
+           // пока нить выполняется - параллельно выполняем действие
+            LogAsync.Text = "ini loading...\n";
+            // если нужно, можно ожидать завершение нити
+            // await task;
+        }                                                                 
+
+        private async Task<String> FileContentAsync(String filename) // ключевое слово async - асинхронный режим
+        {                                                            // все async возвращают Task, String - Result
+            return await Task.Run(() =>                              // имена методов следует заканчивать Аsync
+            {                                                        // перечень параметров - произвольный
+                var sb = new StringBuilder();                        // return await Task.Run(()  - "преобразование" синхронного кода в асинхронный 
+                using (StreamReader reader = new(filename))          // Task.Run(() преобразование синхронного кода в асинхронный
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        sb.AppendLine(reader.ReadLine());
+                    }
+                }
+                // Task.Delay(3000).Wait();
+                return sb.ToString();
+            });
+        }
+        private async Task<Dictionary<String, String>> ParseIniAsync(String ini)
+        {
+            return await Task.Run(() =>
+            {
+                Dictionary<String, String> res = new();
+                String[] lines = ini.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+                foreach(String line in lines)
+                {
+                    if(line.StartsWith("#"))
+                    {
+                        continue;                          // пропускаем строки - комментарии
+                    }
+                    String[] pair = line.Split('=');       // [0] - key. [1] - value
+                    res[pair[0]] = pair[1];                // res["ip"] = "127.0.0";
+                }
+                return res;
+            });
+        }
+
+        private async void LogDicAsync(Dictionary<String, String> dic)
+        {
+            // вывести словарь dic в LogAsync (TextBlock)
+            await Task.Run(() =>
+            {
+                foreach (var pair in dic)                    // итератор: pair.Key / pair.Value
+                {
+                    this.Dispatcher.Invoke(() =>
+                    LogAsync.Text += $"{pair.Key,-10} = {pair.Value}"
+                    );
+                }
+            });
         }
 
         #endregion
-
-        
     }
 }

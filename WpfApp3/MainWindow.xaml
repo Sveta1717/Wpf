@@ -81,5 +81,8 @@
         <Button
             Click="ButtonTask_Click"
             Content="2. Пул потоків. Багатозадачність"/>
+        <Button
+            Click="ButtonProcesses_Click"
+            Content="3. Процеси (диспетчер задач)"/>
     </StackPanel>  
 </Window>
