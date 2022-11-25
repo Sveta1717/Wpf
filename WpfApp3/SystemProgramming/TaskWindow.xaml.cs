@@ -144,68 +144,19 @@ namespace WpfApp3.SystemProgramming
 
         #region Домашне завдання
 
-        private void START2_Click(object sender, RoutedEventArgs e)
-        {
-            Progress1.Value = 0;
-            Progress2.Value = 0;
-            Progress3.Value = 0;
-            cts = new();
-            int i = 0;
-            try
-            {
-                for (i = 0; i < 100; i++)
-                {
-                    ThreadPool.QueueUserWorkItem(PoolWorker2, new PoolWorkerData
-                    {
-                        CancellationToken = cts.Token
-                    });
-                }
-            }
-            catch (OperationCanceledException)
-            {
-                while (i > 0)
-                {
-                    Thread.Sleep(50);
-                    Dispatcher.Invoke(() => Progress1.Value--);
-                    i--;
-                }
-            }
-        }       
-
         private void START1_Click(object sender, RoutedEventArgs e)
         {
-            Task.Run(Starter_Parallel);
-            //Progress1.Value = 0;
-            //Progress2.Value = 10;
-            //Progress3.Value = 50;
-            //cts = new();
-            //int i = 0;
-            //try
-            //{
-            //    for (i = 0; i < 100; i++)
-            //    {
-            //        ThreadPool.QueueUserWorkItem(PoolWorker1, new PoolWorkerData
-            //        {
-            //            CancellationToken = cts.Token
-            //        });
-            //    }
-            //}
-            //catch (OperationCanceledException)
-            //{
-            //    while (i > 0)
-            //    {
-            //        Thread.Sleep(100);
-            //        Dispatcher.Invoke(() => Progress1.Value--);
-            //        Dispatcher.Invoke(() => Progress2.Value--);
-            //        Dispatcher.Invoke(() => Progress3.Value--);
-            //        i--;
-            //    }
-            //}
+            Task.Run(Starter_Consistent);            
+        }       
+
+        private void START2_Click(object sender, RoutedEventArgs e)
+        {
+            Task.Run(Starter_Parallel);           
         }
 
-        private Int32 Paralell(int num)
+        private Int32 Go(int num)
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
             //Task.Delay(1000);
             return num;
         }
@@ -215,60 +166,63 @@ namespace WpfApp3.SystemProgramming
             int i = 0;
             for (i = 0; i < 100; i++)
             {
-                Thread.Sleep(200);
-                //Task<Int32> t1 = Task.Run(() => Paralell(0));
-                //Dispatcher.Invoke(() => Progress1.Value++);                
-                //Task<Int32> t2 = Task.Run(() => Paralell(0));
-                //Dispatcher.Invoke(() => Progress2.Value++);
-                //Task<Int32> t3 = Task.Run(() => Paralell(0));
-                //Task<String> t2 = Task.Run(() => TaskMethod1(100));
-                //Task<String> t3 = Task.Run(() => TaskMethod1(100));
+                Thread.Sleep(100);                
 
-                Dispatcher.Invoke(() => Progress1.Value++);
                 Dispatcher.Invoke(() => Progress2.Value++);
+                Dispatcher.Invoke(() => Progress1.Value++);
                 Dispatcher.Invoke(() => Progress3.Value++);
             }
         }
         private void START3_Click(object sender, RoutedEventArgs e)
         {
-
+            Task.Run(Starter_Mixed);
         }
 
         private void STOP_Click(object sender, RoutedEventArgs e)
-        {           
-            cts?.Cancel();
+        {            
+            cts?.Cancel();           
         }
 
-        private void PoolWorker1(object? pars)
+        private void Starter_Consistent()
         {
-            if (pars is PoolWorkerData data)
+            int i = 0;
+            for (i = 0; i < 100; i++)
             {
-                if (data.CancellationToken.IsCancellationRequested)
-                {
-                    return;
-                }
-                Thread.Sleep(200);
+                Task<Int32> t1 = Task.Run(() => Go(0));
+                Int32 res = t1.Result;
                 Dispatcher.Invoke(() => Progress1.Value++);
+
+                t1 = Task.Run(() => Go(10));
+                res = t1.Result;
+                Task<Int32> t2 = Task.Run(() => Go(0));
                 Dispatcher.Invoke(() => Progress2.Value++);
+
+                t2 = Task.Run(() => Go(20));
+                res = t2.Result;
                 Dispatcher.Invoke(() => Progress3.Value++);
             }
         }
 
-        private void PoolWorker2(object? pars)
+        private void Starter_Mixed()
         {
-            if (pars is PoolWorkerData data)
+            int i = 0;
+            for (i = 0; i < 100; i++)
             {
-                if (data.CancellationToken.IsCancellationRequested)
-                {
-                    return;
-                }               
-                    Thread.Sleep(200);
-                    Dispatcher.Invoke(() => Progress1.Value++);                   
+                Task<Int32> t1 = Task.Run(() => Go(0));
+                Int32 res = t1.Result;
+                Dispatcher.Invoke(() => Progress1.Value++);
+
+                t1 = Task.Run(() => Go(10));
+                res = t1.Result;
+                Task<Int32> t2 = Task.Run(() => Go(0));
+                Dispatcher.Invoke(() => Progress2.Value++);                
+            }
+            for (i = 0; i < 100; i++)
+            {
+                Thread.Sleep(100);
+                Dispatcher.Invoke(() => Progress3.Value++);
             }
         }
-
-        #endregion
-
-        
+        #endregion        
     }
 }
