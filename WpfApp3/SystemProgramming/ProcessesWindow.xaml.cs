@@ -98,7 +98,7 @@ namespace WpfApp3.SystemProgramming
             if(openFileDialog.ShowDialog() == true) 
             {
                 //Process.Start("notepad.exe", File.ReadAllText(openFileDialog.FileName));
-                Process.Start("notepad.exe", @"C:\Users\.txt");
+                Process.Start("notepad.exe", @"C:\Users\");
             }            
             
         }
